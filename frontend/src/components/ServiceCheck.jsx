@@ -53,15 +53,15 @@ const ServiceCheck = ({ children }) => {
 
   if (status.checking || (!allReady && !hasError)) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl border border-white/20">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center py-12 px-4">
+        <div className="bg-white rounded-lg shadow-md p-8 max-w-md w-full">
           <div className="text-center">
             <div className="mb-6">
-              <h1 className="text-3xl font-bold text-white mb-2">QuickTask</h1>
-              <p className="text-purple-200 text-sm">Waking up services...</p>
+              <h1 className="text-3xl font-bold text-primary-600 mb-2">QuickTask</h1>
+              <p className="text-gray-600 text-sm">Waking up services...</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <ServiceStatus 
                 name="Backend API" 
                 status={status.backend} 
@@ -72,7 +72,7 @@ const ServiceCheck = ({ children }) => {
               />
             </div>
 
-            <p className="text-purple-300 text-xs mt-6">
+            <p className="text-gray-500 text-xs mt-6">
               Free tier services may take up to 60 seconds to wake up
             </p>
           </div>
@@ -83,27 +83,27 @@ const ServiceCheck = ({ children }) => {
 
   if (hasError) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 flex items-center justify-center">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl border border-white/20">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center py-12 px-4">
+        <div className="bg-white rounded-lg shadow-md p-8 max-w-md w-full">
           <div className="text-center">
             <div className="mb-6">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
-                <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center">
+                <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
-              <h1 className="text-2xl font-bold text-white mb-2">Service Unavailable</h1>
-              <p className="text-red-200 text-sm mb-4">Some services failed to respond</p>
+              <h1 className="text-2xl font-bold text-gray-800 mb-2">Service Unavailable</h1>
+              <p className="text-gray-600 text-sm mb-4">Some services failed to respond</p>
             </div>
 
-            <div className="space-y-4 mb-6">
+            <div className="space-y-3 mb-6">
               <ServiceStatus name="Backend API" status={status.backend} />
               <ServiceStatus name="Analytics Service" status={status.analytics} />
             </div>
 
             <button
               onClick={() => window.location.reload()}
-              className="w-full bg-white/20 hover:bg-white/30 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+              className="w-full btn-primary"
             >
               Retry Connection
             </button>
@@ -120,36 +120,36 @@ const ServiceStatus = ({ name, status }) => {
   const statusConfig = {
     checking: {
       icon: (
-        <div className="w-5 h-5 border-2 border-purple-400 border-t-transparent rounded-full animate-spin" />
+        <div className="w-5 h-5 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />
       ),
       text: 'Connecting...',
-      color: 'text-purple-300',
+      color: 'text-primary-600',
     },
     ready: {
       icon: (
-        <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       ),
       text: 'Connected',
-      color: 'text-green-400',
+      color: 'text-green-600',
     },
     error: {
       icon: (
-        <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       ),
       text: 'Failed',
-      color: 'text-red-400',
+      color: 'text-red-600',
     },
   };
 
   const config = statusConfig[status];
 
   return (
-    <div className="flex items-center justify-between bg-white/5 rounded-lg px-4 py-3">
-      <span className="text-white font-medium">{name}</span>
+    <div className="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
+      <span className="text-gray-800 font-medium">{name}</span>
       <div className="flex items-center gap-2">
         <span className={`text-sm ${config.color}`}>{config.text}</span>
         {config.icon}
