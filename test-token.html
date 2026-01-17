@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Token Test</title></head>
+<body>
+<h1>Token Test</h1>
+<button onclick="checkToken()">Check Token</button>
+<pre id="output"></pre>
+<script>
+function checkToken() {
+  const token = localStorage.getItem('token');
+  const user = localStorage.getItem('user');
+  document.getElementById('output').textContent = 
+    'Token: ' + (token ? token.substring(0, 50) + '...' : 'NOT FOUND') + '\n' +
+    'User: ' + (user || 'NOT FOUND');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+# ===================
+# Dependencies
+# ===================
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===================
+# Environment Variables
+# ===================
+.env
+.env.*
+!.env.example
+*.local
+
+# ===================
+# Build Outputs
+# ===================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+
+# ===================
+# Logs
+# ===================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===================
+# IDE & Editors
+# ===================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+*.sublime-workspace
+*.sublime-project
+.project
+.settings/
+*.iml
+
+# ===================
+# OS Files
+# ===================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===================
+# Testing & Coverage
+# ===================
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# ===================
+# Runtime & Cache
+# ===================
+*.pid
+*.seed
+*.pid.lock
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# ===================
+# Misc
+# ===================
+*.bak
+*.tmp
+*.temp
+*.csv
+*.dat
+*.out
+*.sql
+*.sqlite
+*.db
+
+# Uploaded files
+uploads/
+temp/
+
+# Docker
+.docker/
+
+# Cursor
+.cursor/
