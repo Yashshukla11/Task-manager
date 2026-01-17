@@ -105,8 +105,3 @@ Test credentials: `john@example.com` / `password123`
 docker-compose up --build
 ```
 
-## URLs
-
-- Frontend: http://localhost:5173
-- Backend: http://localhost:5001
-- Analytics: http://localhost:8001
