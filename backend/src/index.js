@@ -15,8 +15,8 @@ dotenv.config();
 
 const CONFIG = {
   PORT: process.env.PORT || 5001,
-  FRONTEND_ORIGIN: process.env.FRONTEND_ORIGIN || 'http://localhost:5173',
-  ANALYTICS_SERVICE_URL: process.env.ANALYTICS_SERVICE_URL || 'http://localhost:8001',
+  FRONTEND_ORIGINS: process.env.FRONTEND_ORIGIN ? process.env.FRONTEND_ORIGIN.split(',') : ['http://localhost:5173'],
+  ANALYTICS_SERVICE_URL: process.env.ANALYTICS_SERVICE_URL,
   NODE_ENV: process.env.NODE_ENV || 'development'
 };
 
@@ -29,10 +29,19 @@ connectDB();
 // Security middleware
 app.use(helmet());
 
-// CORS configuration
+// CORS configuration - allow multiple origins
 app.use(
   cors({
-    origin: CONFIG.FRONTEND_ORIGIN,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+      
+      if (CONFIG.FRONTEND_ORIGINS.some(allowed => origin.includes(allowed.replace('https://', '').replace('http://', '')))) {
+        return callback(null, true);
+      }
+      
+      callback(new Error('Not allowed by CORS'));
+    },
     credentials: true
   })
 );

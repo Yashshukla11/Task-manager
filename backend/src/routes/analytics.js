@@ -2,7 +2,7 @@ import express from 'express';
 import { authMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
-const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL || 'http://localhost:8001';
+const ANALYTICS_SERVICE_URL = process.env.ANALYTICS_SERVICE_URL;
 
 // All routes require authentication
 router.use(authMiddleware);
