@@ -14,10 +14,10 @@ import { errorHandler } from './middleware/errorHandler.js';
 dotenv.config();
 
 const CONFIG = {
-  PORT: 5001,
-  FRONTEND_ORIGIN: 'http://localhost:5173',
-  ANALYTICS_SERVICE_URL: 'http://localhost:8001',
-  NODE_ENV: 'development'
+  PORT: process.env.PORT || 5001,
+  FRONTEND_ORIGIN: process.env.FRONTEND_ORIGIN || 'http://localhost:5173',
+  ANALYTICS_SERVICE_URL: process.env.ANALYTICS_SERVICE_URL || 'http://localhost:8001',
+  NODE_ENV: process.env.NODE_ENV || 'development'
 };
 
 // Initialize Express app
